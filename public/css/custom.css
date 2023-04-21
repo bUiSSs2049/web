@@ -1,0 +1,65 @@
+/*
+Custom Css
+*/
+
+.prc12 {
+    display: flex;
+    justify-content: center;
+  }
+  p.text-center.mb-0.didscount {
+    font-family: 'Roboto';
+    color: #2c2c2c;
+    margin: 0 3%;
+  }
+
+  html{
+    background: #080b10;
+  }
+
+  p.text-center.mb-0.didscount svg {
+    fill: #ebb129;
+    position: absolute;
+    width: 3pc;
+    margin: 0 -42px;
+  }
+  p.text-center.mb-0.didscount t {
+    z-index: 10;
+    position: relative;
+  }
+
+
+
+
+
+.h1.message {
+  text-align: center;
+  font-family: 'DS Arabic', sans-serif;
+  transform: translateY(23px);
+  background: #ffb500;
+  color: white;
+}
+.p1.message {
+  text-align: center;
+  font-family: 'DS Arabic', sans-serif;
+  color: #525252;
+  transform: translateY(18px);
+}
+.p2.message {
+  text-align: center;
+  font-family: 'DS Arabic', sans-serif;
+  transform: translateY(4px);
+  color: #525252;
+}
+.ttl_sprz{
+  font-family: 'DS Arabic', sans-serif;
+  text-align: center;
+  background: #ffe4a2;
+  box-shadow: 2px 91px 0 127px #ffe4a2;
+}
+.row.random {
+  background: #ffe4a2;
+  box-shadow: 0 0 0 104px #ffe4a2;
+}
+
+
+

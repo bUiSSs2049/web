@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon1.ico">
+    <title>PDF Data</title>
+</head>
+<body>
+
+    <button class="btn btn-succcess btn-lg">
+        <a href="/<%=my_link%>/Sales">back</a>
+    </button>
+
+    <%
+    var how_much_sales = 0;
+    var prr_sold = 0;
+    var imagee = ""
+    sales.forEach((sale)=>{
+        if( sale.id == sale_link ){
+            sold.forEach((prrSS)=>{
+                if ( sale.prrid == prrSS.id ) {
+                    how_much_sales = prrSS.sold_
+                    prr_sold = prrSS.id
+                    imagee = prrSS.image.split(' aissa ')[0].replace('publicmyimagesprr', '')
+                }
+            })
+            
+
+%>
+<br>
+<img src="/myimages/prr/<%= imagee %>" style="width: 17pc;">
+
+<br>
+	<div class="cadre">
+	<div class="ttl">
+		<h3>une commande de</h>
+		<h1><%= sale.name %></h1>
+	</div>
+	<br>
+	<table>
+		<tr>
+			<td>Lien de Produit</td>
+			<th class="ans">
+				<a href="/product/<%= sale.prrid %>" target="_blank">
+					/product/<%= sale.prrid %>
+				</a>
+			</th>
+			<td class="arab">رابط المنتج</td>
+		</tr>
+        <% if ( sale.size !== "" ) { %>
+            <tr>
+                <td>La taille</td>
+                <th class="ans"><%= sale.size %></th>
+                <td class="arab">الحجم</td>
+            </tr>
+        <% } %>
+        <% if ( sale.color !== "" ) { %>
+            <tr>
+                <td>La couleur</td>
+                <th class="ans" style="background-color: <%= sale.color %>">
+                    
+                </th>
+                <td class="arab">اللون</td>
+            </tr>
+        <% } %>
+            <tr>
+                <td>La quantity</td>
+                <th class="ans QmN"><%= parseInt(sale.prr_n) %></th>
+                <td class="arab">الكمية</td>
+            </tr>
+            <tr>
+                <td>Le prix total</td>
+                <th class="ans"><%= parseInt(sale.price) * parseInt(sale.prr_n) %></th>
+                <td class="arab">السعر الإجمالي</td>
+            </tr>
+		<tr>
+	</table>
+
+	<br>
+	<br>
+	<br>
+
+	<table>
+		<tr></tr>
+		<tr>
+			<td>Le nom</td>
+			<th class="ans"><%= sale.name %></th>
+			<td class="arab">الاسم</td>
+		</tr>
+		<tr>
+			<td>nombre de téléphone</td>
+			<th class="ans"><%= sale.phone_num %></th>
+			<td class="arab">رقم الهاتف</td>
+		</tr>
+		<tr>
+			<td>L'address</td>
+			<th class="ans"><%= sale.adress %></th>
+			<td class="arab">العنوان</td>
+
+		</tr>
+		<tr>
+			<td>La date de demande</td>
+			<th class="ans"><%= sale.date %></th>
+			<td class="arab">تاريخ الطلب</td>
+		</tr>
+		<tr>
+	</table>
+	<br>
+	<br>
+	</div>
+
+    <button id="DownPDF" class="btn btn-succcess btn-lg">Download PDF</button>
+    <% if ( sale.confirmed_date == "ليس بعد" ) { %>
+        <form action="/<%= my_link %>/confirm/<%= sale.id %>" method="post">
+            <button type="submit" class="btn btn-succcess btn-lg">تأكيد الطلب</button>
+            <input type="hidden" name="how_much_sales" value="<%= how_much_sales %>">
+            <input type="text" class="QmNto" name="QmNto">
+            <input type="hidden" name="prr_sold_where" value="<%= prr_sold %>">
+        </form>
+    <% } %>
+    
+    <%
+    }
+})
+%>
+
+
+
+<style>
+    body{
+        padding: 0 63px;    background: #e3e3e3;
+    }
+.cadre {
+    padding: 40px;
+    border: solid 4px #787878;
+    border-radius: 21px;    background: #ffffff;
+}
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #818181;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .t tr:nth-child(odd) {
+    background-color: #dddddd;
+  }
+  
+  h3 {
+      color: #7c7c7c;
+      text-align: center;
+  }
+  h1 {
+      font-family: monospace;
+        font-size: 40px;
+  }
+  .ttl{
+      display:flex;
+  }
+  .ttl1{
+      display: flex;
+      justify-content: end;
+      position: absolute;
+      margin: -73px 70%;
+  }
+  .arab {
+      text-align: end;
+  }
+  .ansd {
+      text-align: center;
+  }
+  a{
+      color: black;
+      text-decoration: auto;
+  }
+  @media(max-width : 437px) {
+    .ttl,.arab{display: none;}
+  }
+  
+.QmNto{display: none;}
+
+
+</style>
+
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script>
+
+document.querySelector('#DownPDF').onclick = () => {
+    html2pdf()
+    .from(document.querySelector('.cadre'))
+    .save()
+}
+onclick = () => {
+    document.querySelector('.QmNto').value = document.querySelector('.QmN').innerHTML
+}
+
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>تصفح المنتجات</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/img/<%= smd_[6].link %>">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/templatemo.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+<!--
+    
+TemplateMo 559 Zay Shop
+
+https://templatemo.com/tm-559-zay-shop
+
+-->
+</head>
+
+<body>
+    
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340"><%= smd_[7].link %></a>
+                </div>
+                <div>
+                    
+<%
+smd_.forEach(smd=>{
+    if ( smd.link !== "" && (smd.name == "tiktok" || smd.name == "facebook" || smd.name == "instagram" || smd.name == "youtube") ) {
+%>   
+<a class="text-light" href="<%= smd.link %>" target="_blank"><i class="fab fa-<%= smd.name %> fa-sm fa-fw"></i></a>
+<%
+    }
+})
+%>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+
+    
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+                <img src="/img/<%= smd_[4].link %>" alt="" srcset="">
+            </a>
+
+            <div id="container">
+                
+                <div id="cursor"></div>
+                <div id="text"></div>
+                <div id="text">الشحن</div>
+            </div>
+
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Start Content -->
+    <section class="bg-light">
+<%
+            if ( no !== "1342164273245762473273273273721267147496413aissa" )
+            {
+%>
+<h1 class="h1 message">تم استلام مشترياتك</h1>
+<p class="p1 message">
+سنقوم بالاتصال بك باستخدام رقم الهاتف الذي قدمته لنا للتأكد من هويتك.
+هنا منتجات أخرى قد ترغب في تصفحها.
+</p>
+<p class="p2 message">
+نتمنى أن تعجبك منتجاتنا.
+</p>
+<%
+            }
+%>
+
+        <div class="container py-5">
+        <%
+
+var already = []
+    if ( !random ) {%>
+            <div class="row">
+<%
+        const weight = 5;
+        var sortedProducts = similarProducts.sort(() => Math.random() - 0.5);
+        sortedProducts = sortedProducts.sort((a, b) => {
+            return (b.sold_ * weight) - (b.view_s) - (a.sold_ * weight) + (a.view_s);
+        });
+        sortedProducts = sortedProducts.sort((a, b) => {
+            if (b.sold_ !== a.sold_) {
+            return b.sold_ - a.sold_;
+            }
+            return b.view_s - a.view_s;
+        });
+
+        var card_ = 0
+        sortedProducts.forEach(prr=>{
+            if ( card_ < 15 && prr.id != parseInt(no) && prr.online == 'true' ){
+                card_++
+                var size_s = prr.size_s.split(' aissaoulkhir__ ')[0].split('/_aissa,aissa_/')
+                var color_s = prr.color_s.split(',')
+                var imgs = prr.image.split(" aissa ")
+
+                already.push(prr.id)
+
+%>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="/product/<%= prr.id %>">
+                            <div class="hdn add oho">
+                                <img src="/myimages/prr/<%= prr.image.split(' aissa ')[0].replace('publicmyimagesprr', '') %>" class="card-img-top" alt="...">
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="/product/<%= prr.id %>" class="h2 text-decoration-none text-dark sghir"><%= prr.Mini_title %></a>
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                    <%
+                                    var sizeSlx=""
+                                    var slx = ""
+                                        if ( size_s.length !== 0 ) {
+                                            size_s.forEach(siz=>{
+                                                if (siz !== "") {sizeSlx += slx + siz;
+                                                slx = '/';}
+                                            })
+                                    %>
+                                    <li><%= sizeSlx %></li>
+                                    <%  
+                                            
+                                        }
+                                    %>
+                                    
+                                    <%
+                                        var did1 = false
+                                            
+                                        if ( !did1 && prr.color_s !== "" ) { did = true %>
+                                        <div class="cir out">
+                                            <% color_s.forEach((singleColor)=>
+                                            {
+                                                if ( singleColor !== "" ) {
+                                            %>
+                                            <p id="<%= singleColor %>" class="g" ></p>
+                
+                                        <%
+                                                }
+                                            }) 
+                                        }
+                                    %>
+                                    
+                                </ul>
+                            </ul>
+                            <div class="prc12">
+                                <p class="text-center mb-0 prcdh"><t><%= prr.price %></t></p>
+                                <p class="text-center mb-0 dh_"><t>dh</t></p>
+                                <% if (prr.discount !== 0) {%>
+                                    <p class="text-center mb-0 didscount">
+                                        <t>
+                                            <%= parseInt( (prr.discount)-100 ) %>%
+                                        </t>
+                                        <svg viewBox="0 0 1253 1879">
+                                            <path d="M110.000,39.000 L1139.000,39.000 L1139.000,1720.000 L624.000,1158.000 L110.000,1720.000 L110.000,39.000 Z" class="cls-1"/>
+                                            </svg>
+                                        
+                                    </p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<%
+            }
+        })
+        if ( card_ == 0 )
+        {
+            %>
+            <h1 class="h1 message">ليس لدينا هذا النوع من المنتجات</h1>
+            <%
+        }
+
+%>
+            </div>
+        <%}%>
+        <%
+        var israndom = "random"
+            if ( !random ) {
+        %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="ttl_sprz">منتجات أخرى قد تعجبك</h1>
+            <br>
+            <br>
+
+        <%
+            }else{israndom = ""}
+        %>
+            <div class="row <%= israndom %>">
+                <%
+                
+                        var card_1=0
+                    if ( random ) {
+                        card_1 = -12
+                    }
+                        var prr_s = prrs.sort(() => Math.random() - 0.5);
+                    
+                        prr_s.forEach(prr=>{
+                            if ( card_1 < 12 && prr.id != parseInt(no) && !already.includes(prr.id) && prr.online == 'true' ){
+                                card_1++
+                                var size_s = prr.size_s.split(' aissaoulkhir__ ')[0].split('/_aissa,aissa_/')
+                                var color_s = prr.color_s.split(',')
+                                var imgs = prr.image.split(" aissa ")
+                
+                %>
+                                <div class="col-12 col-md-4 mb-4">
+                                    <div class="card h-100">
+                                        <a href="/product/<%= prr.id %>">
+                                            <div class="hdn add oho">
+                                                <img src="/myimages/prr/<%= prr.image.split(' aissa ')[0].replace('publicmyimagesprr', '') %>" class="card-img-top" alt="...">
+                                            </div>
+                                        </a>
+                                        <div class="card-body">
+                                            <a href="/product/<%= prr.id %>" class="h2 text-decoration-none text-dark sghir"><%= prr.Mini_title %></a>
+                                            <ul class="list-unstyled d-flex justify-content-between">
+                                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                                    <%
+                                                    var sizeSlx=""
+                                                    var slx = ""
+                                                        if ( size_s.length !== 0 ) {
+                                                            size_s.forEach(siz=>{
+                                                                if (siz !== "") {sizeSlx += slx + siz;
+                                                                slx = '/';}
+                                                            })
+                                                    %>
+                                                    <li><%= sizeSlx %></li>
+                                                    <%  
+                                                            
+                                                        }
+                                                    %>
+                                                    
+                                                    <%
+                                                        var did1 = false
+                                                            
+                                                        if ( !did1 && prr.color_s !== "" ) { did = true %>
+                                                        <div class="cir out">
+                                                            <% color_s.forEach((singleColor)=>
+                                                            {
+                                                                if ( singleColor !== "" ) {
+                                                            %>
+                                                            <p id="<%= singleColor %>" class="g" ></p>
+                                
+                                                        <%
+                                                                }
+                                                            }) 
+                                                        }
+                                                    %>
+                                                    
+                                                </ul>
+                                            </ul>
+                                            <div class="prc12">
+                                                <p class="text-center mb-0 prcdh"><t><%= prr.price %></t></p>
+                                                <p class="text-center mb-0 dh_"><t>dh</t></p>
+                                                <% if (prr.discount !== 0) {%>
+                                                    <p class="text-center mb-0 didscount">
+                                                        <t>
+                                                            <%= parseInt( (prr.discount)-100 ) %>%
+                                                        </t>
+                                                        <svg viewBox="0 0 1253 1879">
+                                                            <path d="M110.000,39.000 L1139.000,39.000 L1139.000,1720.000 L624.000,1158.000 L110.000,1720.000 L110.000,39.000 Z" class="cls-1"/>
+                                                            </svg>
+                                                        
+                                                    </p>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                <%
+                            }
+                        })
+                    
+                %>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Content -->
+
+
+
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    
+                    <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+                        <img src="/img/<%= smd_[5].link %>" alt="" srcset="">
+                    </a>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:<%= smd_[7].link %>"><%= smd_[7].link %></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light sghir">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+<%
+                    var category = catyy_g.sort(() => Math.random() - 0.5);
+                    var nCaty = 0
+                    category.forEach(category1=>{
+                        if ( nCaty < 7 ) {
+                            nCaty++
+%>
+                        <li><a class="text-decoration-none" href="/category/<%= category1.name %>"><%= category1.name %></a></li>
+<%
+                        }
+                    })
+%>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        <%
+                        smd_.forEach(smd=>{
+                            if ( smd.link !== "" && (smd.name == "tiktok" || smd.name == "facebook" || smd.name == "instagram" || smd.name == "youtube") ) {
+                        %>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="<%= smd.link %>"><i class="fab fa-<%= smd.name %> -f fa-lg fa-fw"></i></a>
+                        </li>
+                        <%
+                            }
+                        })
+                        %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="/js/aissa.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>
+

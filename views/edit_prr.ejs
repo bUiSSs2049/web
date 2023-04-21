@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link href="/css/aissa.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon1.ico">
+    <title>تعديل المنتج</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Dosis|Candal' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    
+
+    
+
+<%
+    prrs.forEach((prr)=>{
+        if ( prr.id == special ) {
+%>
+<form action="/<%= myylink %>/product/edited/<%= special %>" method="post" enctype="multipart/form-data">
+
+    <h1 class="headEdit">تعديل المنتج</h1>
+    <br>
+    <br>
+    <br>
+
+
+    <div id="ttDesc">
+        <h3 class="l3onwan whatsThis"> : مختصر العنوان</h3>    <input class="l3onwan" type="text" name="Mini_title" value="<%= prr.Mini_title %>" id="title" placeholder="حذاء">
+    </div>
+    <div id="ttDesc">
+        <h3 class="l3onwan whatsThis"> : العنوان</h3>    <input class="l3onwan" type="text" name="title" value="<%= prr.title %>" id="title" placeholder=" .... ... حذاء">
+    </div>
+        <h3 class="l3onwan whatsThis" style="color: #9d80ba;"> : الوصف</h3><br>
+    <div id="deskr">
+        <div class="toolbar">
+            <div class="fore-wrapper"><i class='fa fa-font' style='color:#C96;'></i>
+              <div class="fore-palette">
+              </div>
+            </div>
+            <div class="back-wrapper"><i class='fa fa-font' style='background:#C96;'></i>
+              <div class="back-palette">
+              </div>
+            </div>
+            <a href="#" data-command='bold'><i class='fa fa-bold'></i></a>
+            <a href="#" data-command='italic'><i class='fa fa-italic'></i></a>
+            <a href="#" data-command='underline'><i class='fa fa-underline'></i></a>
+            <a href="#" data-command='strikeThrough'><i class='fa fa-strikethrough'></i></a>
+            <a href="#" data-command='justifyLeft'><i class='fa fa-align-left'></i></a>
+            <a href="#" data-command='justifyCenter'><i class='fa fa-align-center'></i></a>
+            <a href="#" data-command='justifyRight'><i class='fa fa-align-right'></i></a>
+            <a href="#" data-command='justifyFull'><i class='fa fa-align-justify'></i></a>
+            <a href="#" data-command='indent'><i class='fa fa-indent'></i></a>
+            <a href="#" data-command='outdent'><i class='fa fa-outdent'></i></a>
+            <a href="#" data-command='insertUnorderedList'><i class='fa fa-list-ul'></i></a>
+            <a href="#" data-command='insertOrderedList'><i class='fa fa-list-ol'></i></a>
+            <a href="#" data-command='subscript'><i class='fa fa-subscript'></i></a>
+            <a href="#" data-command='superscript'><i class='fa fa-superscript'></i></a>
+        </div>
+        <div id='editor' contenteditable>
+            <%= prr.description %>
+        </div>
+        <input type="text" name='description' id='description'>
+    </div>
+    
+    <div id="gfg">
+        <h3 class="whatsThis "> : السعر</h3>    <input class="" type="number" name="price" id="price" value="<%= prr.price %>">
+        <div class="slidecontainer">
+            <input type="range" min="0" max="90" value="<%= prr.discount %>" class="slider" id="myRange">
+            <p>
+                <span id="omega"><%= prr.price %></span>
+                <span id="demo" ><%= parseInt(prr.discount * prr.price /10) /10 %>dh</span>
+                <span id="demo1"><%= parseInt(prr.discount) %>%</span>
+            </p>
+        <input type="text" name="discount" id="discount" value="<%= prr.discount * prr.price / 100 %>" style="display: none;">
+        </div>
+
+    </div>
+<div class="uploads">
+    <div>
+        <input class="imgs" type="file" name="image1" id="image1" accept="image/png, image/jpeg" value="nothing_choosed__" multiple>
+        <label for="image1" class="files">
+            <div class="dott">
+                <b>الصور</b>
+            </div>
+        </label>
+    </div>
+    <br>
+    <div>
+        <input class="imgs" type="file" name="video" id="video" accept="video/mp4" value="nothing_choosed__" multiple>
+        <label for="video" class="files">
+            <div class="dott">
+                <svg viewBox="0 0 300.000000 246.000000" style="fill: #855fac;width: 2.4pc;margin: 0 17px;">
+                    <g transform="translate(0.000000,246.000000) scale(0.100000,-0.100000)">
+                        <path d="M731 2449 c-60 -12 -127 -53 -156 -97 -57 -87 -55 -37 -55 -1126 0 -1115 -4 -1053 68 -1137 52 -60 104 -83 187 -84 79 0 84 3 375 173 172 100 218 127 765 443 429 248 577 333 653 376 87 50 152 146 152 225 0 58 -35 140 -77 179 -41 39 -32 33 -1071 633 -386 223 -714 408 -727 411 -56 11 -72 12 -114 4z"></path>
+                    </g>
+                </svg>
+
+            </div>
+        </label>
+    </div>
+</div>
+
+<br>
+<h2> : الألوان</h2>
+<div class="prr_clrss">
+    <p id="add_color"> إضافة اللون</p>
+    <input type="color" id="color">
+    <div class="clrss">
+        <%= prr.color_s %>        
+    </div>
+</div>
+
+<input type="text" name="colors" id="colors__input" style="display: none;">
+
+
+
+<h2> : الأحجام</h2>
+<div class="prr_sizes">
+    <p id="add_size"> إضافة الحجم</p>
+    <input type="text" id="size" placeholder="اسم الحجم">
+    <input type="number" id="size_price" placeholder="سعر الحجم" value="0">
+    <div class="sizes">
+
+        <%= prr.size_s %>
+
+    </div>
+</div>
+
+<input type="text" name="sizes" id="sizes__input" style="display: none;">
+
+<br>
+<br>
+
+
+    <h2 class="whatsThis"> : التصنيف</h2>
+    
+
+    <div class="tags">
+        <input type="text" id="myInput" placeholder="البحث عن العلامات">
+        <ul id="myUL">
+        <% tags.forEach((tag)=>{
+            %>
+            <li><a><%= tag.name %></a></li>
+            <%
+        }) %>
+        </ul>
+        <div class="whereTags"></div>
+    </div>
+    <input type="text" name="what_tags_are_there" id="what_tags_are_there" style="display: none;" value="<%= prr.name_of_pr %>" >
+    
+<br>
+<br>
+<div class="hhh">
+    <h>تقييم المنتج</h>
+<input name="rating" id="ratingTxt" type="number" style="display: none;" value = "<%= prr.rating %>">
+</div>
+<br>
+<div>
+    <div id="isp">
+        <b>أونلاين</b>
+        <b>أنا فقط</b>
+        <%
+        var isOnOff = "offline"
+         if ( prr.online === "true" )
+         {
+            isOnOff = "online"
+         }
+         %>        
+
+        <div class="<%= isOnOff %>"></div>
+        <input type="text" name="online" value="true" style="display: none;">
+    </div>
+<br>
+<br>
+<br>
+    <input type="submit" value="نشر">
+</div>
+
+</form>
+
+<%
+        }
+    })
+%>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/jquery-1.11.0.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/aissa1.js"></script>
+</body>
+</html>
+
+
+
+
+
+<!--script>
+    document.querySelector('button').onclick = () => {
+    html2pdf()
+    .from(`
+    <!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body {
+    text-align: center;
+}
+.colonnes{
+	display:flex;
+	margin:0 20%;
+    filter: grayscale(0) drop-shadow(0 4px 6px black);
+}
+
+.colonne {
+    border: solid 1px;
+    border-bottom: 0;
+    border-right: 0;
+
+
+    width: 100px;
+    height: 20px;
+    padding: 0;
+    text-align: center;
+    background: #425dc1;
+    color: #ffffff;
+    border-color: #000;
+    padding: 9px;
+}
+.twel {
+    width: 350px;
+    background: #ffd1b1;
+    color: #000000;
+}
+
+
+
+div#product {
+    width: 384px;
+    height: 230px;
+    background: linear-gradient(45deg, #04aa6d7d, #059862);
+    margin: 69px 20%;
+    border-radius: 88px 10px 10px 10px;
+}
+div#product img {
+    width: 166px;
+    margin: 9px -184px;
+    border-radius: 95px;
+    position: absolute;
+}
+div#product p {
+    width: 184px;
+    height: 15px;
+    background: linear-gradient(45deg, #6c6c6c, #444444);
+    margin: 23px 0;
+    border-radius: 62px;
+}
+div#product p:last-of-type {
+    margin: 26px -179px;
+    height: 33px;
+    border-radius: 11px;
+    width: 357px;
+    opacity: 0.7;
+}
+t {
+    margin: 5px 0;
+    position: absolute;
+}
+</style>
+
+
+
+</head>
+<body>
+
+
+<div class="all">
+
+
+
+<div class="colonnes">
+	<div class="colonne twel">${document.querySelectorAll('input')[0].value}</div>
+	<div class="colonne">الاسم</div>
+</div>
+<div class="colonnes">
+	<div class="colonne twel">${document.querySelectorAll('input')[1].value}</div>
+	<div class="colonne">رقم الهاتف</div>
+</div>
+<div class="colonnes">
+	<div class="colonne twel">${document.querySelectorAll('input')[2].value}</div>
+	<div class="colonne">العنوان</div>
+</div>
+
+<div id="product">
+  <img src="https://templatemo.com/templates/templatemo_559_zay_shop/assets/img/banner_img_01.jpg">
+  
+  <t>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </t>
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>
+    
+    `)
+    .save()
+}
+</!script>
