@@ -46,10 +46,10 @@ app.use(flash());
 
 
 
-require('dotenv').config();
+//require('dotenv').config();
 
 
-  const my_link = process.env.DOMAIN_BFFFFFFFFFF_HHHHHHHHH_DOMAIN_GOD_DOMAIN_AISSA 
+  const my_link = 123//process.env.DOMAIN_BFFFFFFFFFF_HHHHHHHHH_DOMAIN_GOD_DOMAIN_AISSA 
   
   const mysql = require('mysql2')
 
@@ -592,7 +592,7 @@ const ip = require('ip')
             + oth1+" = '"+           aissa1                 +"',"
             +"title = '"+           req.body.title             +"',"
             +"Mini_title = '"+      req.body.Mini_title        +"',"
-            +"description = '"+     req.body.description.toString()       +"',"
+            +"description = '"+     req.body.description       +"',"
             +"price = '"+           req.body.price             +"',"
             +"discount = '"+        req.body.discount          +"',"
             +"color_s = '"+         req.body.colors            +"',"
@@ -600,8 +600,6 @@ const ip = require('ip')
             +"online = '"+          req.body.online            +"',"
             +"name_of_pr = '"+      req.body.what_tags_are_there        +"'"
             +"  WHERE product_data_prr.id = "+req.params.edited_Prr
-
-            
 
 
             conn.query(sql, function (err1, result) {
@@ -957,7 +955,6 @@ const ip = require('ip')
             confirmed sale !! 
             <h1>
             <a href="/${my_link}/confirmed_slz">check </a>
-
             `)
         })
         /// confirm sale
@@ -1034,4 +1031,4 @@ const ip = require('ip')
 
 
 
-  app.listen(3000)
+  app.listen(process.env.PORT || 4000)
