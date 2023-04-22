@@ -135,16 +135,8 @@ app.set('views', './views');
 
 
 
-const allowedIps = [''] //process.env.ARR8MEEEEE_JJJJJJJJSSSSSSSSRRRRRRRRTTTT;
-const ip = require('ip')
 
 
-
-
-
-
-
-//const { sendConfirmationEmail } = require('nodemailer')
     app.get('/', (req, res) => {
         conn.query('SELECT * FROM catygories_chosen_', (err, result) => {
             conn.query("SELECT * FROM smd", (err, smd) => {
