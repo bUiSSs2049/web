@@ -49,7 +49,7 @@ app.use(flash());
 //require('dotenv').config();
 
 
-  const my_link = 123//process.env.DOMAIN_BFFFFFFFFFF_HHHHHHHHH_DOMAIN_GOD_DOMAIN_AISSA 
+  const my_link = process.env.DOMAIN_BFFFFFFFFFF_HHHHHHHHH_DOMAIN_GOD_DOMAIN_AISSA 
   
   const mysql = require('mysql2')
 
