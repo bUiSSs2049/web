@@ -1,11 +1,11 @@
 //require('dotenv').config();
 module.exports = {
     'connection':{
-     'host':"getfollowers2.online",
-     'user':"u909908174_Aissa_db_sql__",
-     'password':"Mysql1/2/3.cestout"
+     'host':process.env.HOST,
+     'user':process.env.USER,
+     'password':process.env.PQSS
     },
-    'database':"u909908174_CesTout_eco_db",
+    'database':process.env.DB,
     'user_table':'users'
 }
    
